@@ -13,13 +13,15 @@ function App() {
   const checkDomain =
     /^[a-zA-Z0-9][a-zA-Z0-9-]{1,61}[a-zA-Z0-9](?:\.[a-zA-Z]{2,})+/
   
+    const apiKey = process.env.REACT_APP_IPIFY_API_KEY;
 
 useEffect(() => {
  try {
    const getInitialData = async () =>{
-    const res = await fetch(`https://geo.ipify.org/api/v2/country,city?apiKey=at_nvGWSh6Vt1YQU6OzxwbwkSx0WwBbn&ipAddress=8.8.8.8`);
+    const res = await fetch(`https://geo.ipify.org/api/v2/country,city?apiKey=${apiKey}&ipAddress=8.8.8.8`);
     const data = await res.json()
     setAddress(data)
+    console.log('Initial data fetched:', data);
    }
    getInitialData()
  } catch (error) {
@@ -29,7 +31,7 @@ useEffect(() => {
 }, [])
 
 async function getAddress(){
-  const res = await fetch(`https://geo.ipify.org/api/v2/country,city?apiKey=at_nvGWSh6Vt1YQU6OzxwbwkSx0WwBbn&${
+  const res = await fetch(`https://geo.ipify.org/api/v2/country,city?apiKey=${apiKey}&${
       checkIpAddress.test(ipAddress) ?  `ipAddress=${ipAddress}` :
        checkDomain.test(ipAddress) ? `domain=${ipAddress}` : ""
     }`);
