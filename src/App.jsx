@@ -17,7 +17,7 @@ function App() {
 useEffect(() => {
  try {
    const getInitialData = async () =>{
-    const res = await fetch(`https://geo.ipify.org/api/v2/country,city?apiKey=at_nvGWSh6Vt1YQU6OzxwbwkSx0WwBbn&ipAddress=192.212.174.101`);
+    const res = await fetch(`https://geo.ipify.org/api/v2/country,city?apiKey=at_nvGWSh6Vt1YQU6OzxwbwkSx0WwBbn&ipAddress=8.8.8.8`);
     const data = await res.json()
     setAddress(data)
    }
@@ -69,23 +69,23 @@ function handleSubmit(e){
       </div>
       {address && 
       <>
-        <div className="absolute top-[230px] w-full h-full px-5 md:h-[150px] flex justify-center items-center z-10">
-          <div className="grid md:grid-cols-4 md:place-items-center w-full md:w-[1000px] h-full bg-white  px-10 rounded-xl">
-            <div className="grid gap-4 md:border-r border-r-slate-500 pr-14 h-14 md:h-20">
+        <div className="absolute top-[150px] md:top-[230px] w-full h-[280px] px-5 py-5 md:py-0 md:h-[150px] flex justify-center items-center z-10">
+          <div className="grid gap-0 md:grid-cols-4 md:place-items-center w-full md:w-[1000px] h-full bg-white  px-10 rounded-xl">
+            <div className="grid gap-0 md:gap-4 md:border-r border-r-slate-500 pr-14 h-full md:h-20 place-items-center">
               <h4 className="text-zinc-500 font-semibold text-sm">IP ADDRESS</h4>
-              <h1 className="font-bold text-lg md:text-xl">{address.ip}</h1>
+              <h1 className="font-semibold md:font-bold text-base md:text-xl">{address.ip}</h1>
             </div>
-            <div className="grid gap-1 md:border-r border-r-slate-500 pr-14 h-14 md:h-20">
-              <h4 className="text-zinc-500 font-semibold text-sm">LOCATION</h4>
-              <h1 className="font-bold text-lg md:text-xl">{address.location.city}, {address.location.region}</h1>
+            <div className="grid gap-0 md:border-r border-r-slate-500 pr-14 h-full md:h-20 place-items-center">
+              <h4 className="text-zinc-500 font-semibold text-xs md:text-sm">LOCATION</h4>
+              <h1 className="font-semibold md:font-bold text-base md:text-xl text-center">{address.location.city}, {address.location.region}</h1>
             </div>
-            <div className="grid gap-1 md:border-r border-r-slate-500 pr-14 h-14 md:h-20">
-              <h4 className="text-zinc-500 font-semibold text-sm">TIME ZONE</h4>
-              <h1 className="font-bold text-lg md:text-xl">UTC {address.location.timezone}</h1>
+            <div className="grid gap-1 md:border-r border-r-slate-500 pr-14 h-full md:h-20 place-items-center">
+              <h4 className="text-zinc-500 font-semibold text-xs md:text-sm">TIME ZONE</h4>
+              <h1 className="font-semibold md:font-bold text-base md:text-xl">UTC {address.location.timezone}</h1>
             </div>
-            <div className="grid gap-1 pr-14 h-14 md:h-20">
-              <h4 className="text-zinc-500 font-semibold text-sm">ISP</h4>
-              <h1 className="font-bold text-lg md:text-xl">{address.isp}</h1>
+            <div className="grid gap-1 pr-14 h-full md:h-20 place-items-center">
+              <h4 className="text-zinc-500 font-semibold text-xs md:text-sm">ISP</h4>
+              <h1 className="font-semibold md:font-bold text-base md:text-xl">{address.isp}</h1>
             </div>
           </div>
         </div>
