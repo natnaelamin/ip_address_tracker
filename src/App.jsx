@@ -13,7 +13,7 @@ function App() {
   const checkDomain =
     /^[a-zA-Z0-9][a-zA-Z0-9-]{1,61}[a-zA-Z0-9](?:\.[a-zA-Z]{2,})+/
   
-    const apiKey = process.env.REACT_APP_IPIFY_API_KEY;
+    const apiKey = import.meta.env.VITE_IPIFY_API_KEY;
 
 useEffect(() => {
  try {
